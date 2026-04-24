@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Amortization Calculator</title>
+</head>
+<body>
+
+<p>Name: Jared Adams</p>
+<p>Email: jiadams1@waketech.edu</p>
+<p>Date: March 10, 2026</p>
+
+<button id="Button1">Calculate Amortization</button>
+
+<p id="output"></p>
+
+<script>
+document.getElementById("Button1").addEventListener("click", function() {
+
+    let loanAmount = parseFloat(prompt("Enter the loan amount (without commas):"));
+    let termYears = parseInt(prompt("Enter the loan term in years (15 or 30):"));
+
+    if (termYears !== 15 && termYears !== 30) {
+        alert("Loan term must be 15 or 30 years.");
+        return;
+    }
+
+    let interestRate = 0.0575;
+    let monthlyPayment = (((interestRate / 12) * loanAmount) / 
+        (1 - Math.pow(1 + (interestRate / 12), (termYears * -12)))).toFixed(2);
+
+    let termMonths = termYears * 12;
+    let totalInterest = (monthlyPayment * termMonths) - loanAmount;
+    let totalMortgage = loanAmount + totalInterest;
+    let balance = totalMortgage;
+
+    let outputText = "";
+    outputText += "Mortgage term in years: " + termYears + "<br>";
+    outputText += "Mortgage interest rate: 5.75%<br>";
+    outputText += "Mortgage amount (total loan amount): $" + totalMortgage.toFixed(2) + "<br>";
+    outputText += "Total interest amount: $" + totalInterest.toFixed(2) + "<br>";
+    outputText += "Total mortgage amount: $" + totalMortgage.toFixed(2) + "<br><br>";
+
+    for (let i = 1; i <= termMonths; i++) {
+        balance = balance - monthlyPayment;
+        if (balance < 0) balance = 0;
+        outputText += "Month " + i + " Payment: $" + parseFloat(monthlyPayment).toFixed(2) +
+                      " | Balance: $" + balance.toFixed(2) + "<br>";
+        if (balance === 0) {
+            outputText += "Ending...<br>";
+            break;
+        }
+    }
+
+    document.getElementById("output").innerHTML = outputText;
+
+});
+</script>
+
+</body>
+</html>

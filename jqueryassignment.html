@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Assignment</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .highlight {
+            color: white;
+            background-color: blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="mainHeading">Welcome to My Page</h1>
+    <p id="mainParagraph">This is my paragraph for the assignment. Click "Change Text" to update the heading. Click "Hide/Show Paragraph" to hide or show this message.</p>
+
+    <button id="btn1">Change Text</button>
+    <button id="btn2">Hide/Show Paragraph</button>
+
+    <script>
+        $(document).ready(function(){
+
+            // Button 1: Change heading text
+			let changed = false;
+
+        $("#btn1").click(function(){
+            if (!changed) {
+                $("#mainHeading").text("The heading has been changed using jQuery!");
+                changed = true;
+            } else {
+                $("#mainHeading").text("Welcome to My Page");
+                changed = false;
+            }
+        });
+
+            // Button 2: Hide or show paragraph
+            $("#btn2").click(function(){
+                $("#mainParagraph").fadeToggle();
+            });
+
+        });
+    </script>
+
+</body>
+</html>

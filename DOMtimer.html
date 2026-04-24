@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer Assignment</title>
+    <style>
+        #timerDisplay {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Timer display -->
+    <div id="timerDisplay">0</div>
+
+    <!-- Button prompts -->
+    <input type="button" id="startTimer" value="Start Timer"><br>
+    <input type="button" id="stopTimer" value="Stop Timer"><br> 
+    <input type="button" id="resetTimer" value="Reset Timer"><br> 
+
+    <script>
+        let time = 0;
+        let timer = null;
+
+        const display = document.getElementById("timerDisplay");
+        const startBtn = document.getElementById("startTimer");
+        const stopBtn = document.getElementById("stopTimer");
+        const resetBtn = document.getElementById("resetTimer");
+
+        // Start Timer Function
+        startBtn.onclick = function() {
+            // Prevent multiple timers from running at once
+            if (timer === null) {
+                timer = setInterval(function() {
+                    time++;
+                    display.innerHTML = time; // REQUIRED innerHTML usage
+                }, 1000);
+            }
+        };
+
+        // Stop Timer Function
+        stopBtn.onclick = function() {
+            clearInterval(timer);
+            timer = null;
+        };
+
+        // Reset Timer Function
+        resetBtn.onclick = function() {
+            clearInterval(timer);
+            timer = null;
+            time = 0;
+            // Reset display using innerHTML
+			display.innerHTML = time; 
+        };
+    </script>
+
+</body>
+</html>
