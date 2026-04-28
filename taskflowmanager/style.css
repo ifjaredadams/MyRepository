@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.form-container {
+    margin: 20px auto;
+}
+
+input, select, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+#taskmanager {
+    width: 60%;
+    margin: auto;
+}
+
+.task {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 6px solid gray;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Priority colors */
+.high { border-color: red; }
+.medium { border-color: orange; }
+.low { border-color: green; }
